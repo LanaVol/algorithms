@@ -37,6 +37,23 @@ function binarySearch(array, item) {
 console.log(binarySearch(arr, 16)); //знаходить за 4 ітерації
 console.log("count= ", count); //О(log2 N) - складність такого алгоритму О від логарифму N за основою 2; тобто маємо 16 елементів в масиві і логарифм від 16 за основою 2 => 4 і за чотири ітерації ми можемо знайти потрібний нам елемент
 
+//В-2 за допомогою рекурсії
+function recursionBinarySearch(array, item, start, end) {
+  let middle = Math.floor((start + end) / 2);
+  count += 1;
+  if (item === array[middle]) {
+    return middle;
+  }
+  if (item < array[middle]) {
+    return recursionBinarySearch(array, item, start, middle - 1);
+  } else {
+    return recursionBinarySearch(array, item, middle + 1, end);
+  }
+}
+
+console.log(recursionBinarySearch(arr, 5, 0, arr.length));
+console.log("@count", count);
+
 // --------------Задача знайти в масиві елемент, або якщо він відсутній то знайти позицію на яку він має бути вставлений по порядку
 var searchInsert = function (nums, target) {
   let start = 0;
